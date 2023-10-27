@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.security.Key;
 
 public class GamePanel extends JPanel implements Runnable {
     // Rozdzielczosc gry
@@ -7,14 +8,18 @@ public class GamePanel extends JPanel implements Runnable {
     final int screen_height = 576;
     //Stan gry
     int game_state;
-    final int[] main_menu_state  = {1,2,3};
 
     Thread Game_Thread;
-    GUI GUI = new GUI(this);
+
+    KeyHandler Key_Handler = new KeyHandler(this);
+
+    GUI GUI = new GUI(this, Key_Handler);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
         this.setBackground(Color.black);
+        this.addKeyListener(Key_Handler);
+        this.setFocusable(true);
     }
     public void startGameThread(){
         Game_Thread = new Thread(this);
@@ -22,27 +27,41 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setupGame(){
-        game_state = main_menu_state[0];
+        game_state = 0;
     }
 
     @Override
     public void run() {
 
+        double draw_interval = 1000000000/60;
+        double delta = 0;
+        long last_time = System.nanoTime();
+        long current_time;
+
         while(Game_Thread != null){
-            Update();
-            repaint();
+
+            current_time = System.nanoTime();
+            delta += (current_time - last_time) / draw_interval;
+            last_time = current_time;
+
+            if(delta >= 1) {
+                Update();
+                repaint();
+                delta--;
+            }
+
         }
 
     }
 
     public void Update(){
-
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
-        if(game_state == main_menu_state[0]) {
-            GUI.drawMainMenu_0(g2d);
+        //Main Menu
+        if(game_state == 0 || game_state == 1 || game_state == 2) {
+            GUI.drawMainMenu(g2d);
         }
     }
 

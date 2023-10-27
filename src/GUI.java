@@ -2,9 +2,13 @@ import java.awt.*;
 
 public class GUI {
 
+    int main_menu_state;
+
+    KeyHandler Key_Handler;
+
     GamePanel Game_Panel;
 
-    public GUI(GamePanel Game_Panel){
+    public GUI(GamePanel Game_Panel, KeyHandler Key_Handler){
 
         this.Game_Panel = Game_Panel;
 
@@ -104,6 +108,15 @@ public class GUI {
         y = 420;
         g2d.setColor(Color.RED);
         g2d.drawString(">Wyjdz", x, y);
+    }
+
+    public void drawMainMenu(Graphics2D g2d){
+        if(Game_Panel.game_state == 0)
+            drawMainMenu_0(g2d);
+        if(Game_Panel.game_state == 1)
+            drawMainMenu_1(g2d);
+        if(Game_Panel.game_state == 2)
+            drawMainMenu_2(g2d);
     }
 
 }
