@@ -1,14 +1,9 @@
 import java.awt.*;
 
 public class GUI {
-
-    int main_menu_state;
-
-    KeyHandler Key_Handler;
-
     GamePanel Game_Panel;
 
-    public GUI(GamePanel Game_Panel, KeyHandler Key_Handler){
+    public GUI(GamePanel Game_Panel){
 
         this.Game_Panel = Game_Panel;
 

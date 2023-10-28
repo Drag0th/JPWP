@@ -14,7 +14,7 @@ public class GameWindow {
         Game_Window.pack();
         Game_Window.setVisible(true);
         Game_Panel.startGameThread();
-        Game_Panel.setupGame();
+
 
         try {
             Game_Window.setIconImage(ImageIO.read(getClass().getResourceAsStream("res/icon/Game_icon.png")));;

@@ -24,7 +24,9 @@ public class KeyHandler implements KeyListener {
 
         int key_check = e.getKeyCode();
 
-        if(Game_Panel.game_state == 0 || Game_Panel.game_state == 1 || Game_Panel.game_state == 2) {
+        //Main Menu
+
+        if(Game_Panel.game_state < Game_Panel.main_menu_state) {
             if (key_check == KeyEvent.VK_W) {
                 if (Game_Panel.game_state > 0)
                     Game_Panel.game_state--;
@@ -37,6 +39,33 @@ public class KeyHandler implements KeyListener {
                 else
                     Game_Panel.game_state = 0;
             }
+            if(key_check == KeyEvent.VK_ENTER){
+                if(Game_Panel.game_state == 0){
+                    Game_Panel.game_state = Game_Panel.gameplay_state;
+                }
+                if(Game_Panel.game_state == 1){
+                    Game_Panel.game_state = Game_Panel.data_state;
+                }
+                if(Game_Panel.game_state == 2){
+                    System.exit(0);
+                }
+
+            }
+        }
+
+        if(Game_Panel.game_state == Game_Panel.gameplay_state){
+            if(key_check == KeyEvent.VK_W){
+                w_pressed = true;
+            }
+            if(key_check == KeyEvent.VK_S){
+                s_pressed = true;
+            }
+            if(key_check == KeyEvent.VK_A){
+                a_pressed = true;
+            }
+            if(key_check == KeyEvent.VK_D){
+                d_pressed = true;
+            }
         }
 
 
@@ -45,6 +74,22 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+        int key_check = e.getKeyCode();
+
+        if(Game_Panel.game_state == Game_Panel.gameplay_state){
+            if(key_check == KeyEvent.VK_W){
+                w_pressed = false;
+            }
+            if(key_check == KeyEvent.VK_S){
+                s_pressed = false;
+            }
+            if(key_check == KeyEvent.VK_A){
+                a_pressed = false;
+            }
+            if(key_check == KeyEvent.VK_D){
+                d_pressed = false;
+            }
+        }
 
     }
 }
