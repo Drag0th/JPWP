@@ -11,6 +11,8 @@ public class GamePanel extends JPanel implements Runnable {
     final int main_menu_state = 3;
     final int gameplay_state = 4;
     final int data_state = 5;
+    //Mapa
+    int map_number;
 
     Thread Game_Thread;
 
@@ -18,6 +20,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     GUI GUI = new GUI(this);
     Player Player = new Player(this, Key_Handler);
+    TilesStorage Tiles_Storage = new TilesStorage();
+    MapStorageAndRender Map_Storage_And_Render = new MapStorageAndRender(this, Tiles_Storage);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
@@ -33,6 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame(){
         game_state = 0;
+        map_number = 0;
     }
 
     @Override
@@ -72,6 +77,7 @@ public class GamePanel extends JPanel implements Runnable {
             GUI.drawMainMenu(g2d);
         }
         if(game_state == gameplay_state){
+            Map_Storage_And_Render.draw(g2d);
             Player.draw(g2d);
         }
     }
