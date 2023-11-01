@@ -26,8 +26,7 @@ public class Player extends Entity {
         y = 48;
         speed = 4;
         direction = "down";
-        map_y = 1;
-        map_x = 1;
+
     }
 
     public void  getPlayerImage(){
@@ -93,6 +92,7 @@ public class Player extends Entity {
     }
 
     public void update(){
+        calculateMapGrid();
         if(Key_Handler.w_pressed && (Key_Handler.a_pressed == false) && (Key_Handler.d_pressed == false) && (Key_Handler.s_pressed == false)){
             if(Tiles_Storage.Tile[Map_Storage_And_Render.Map[Game_Panel.map_number][map_y][map_x]].collision){
                 if(direction == "up")
