@@ -7,6 +7,9 @@ public class KeyHandler implements KeyListener {
     public static boolean s_pressed;
     public static boolean a_pressed;
     public static boolean d_pressed;
+    public static boolean one_pressed;
+    public static boolean two_pressed;
+    public static boolean three_pressed;
 
     GamePanel Game_Panel;
 
@@ -66,6 +69,15 @@ public class KeyHandler implements KeyListener {
             if(key_check == KeyEvent.VK_D){
                 d_pressed = true;
             }
+            if(key_check == KeyEvent.VK_1){
+                one_pressed = true;
+            }
+            if(key_check == KeyEvent.VK_2){
+                two_pressed = true;
+            }
+            if(key_check == KeyEvent.VK_3){
+                three_pressed = true;
+            }
         }
 
 
@@ -88,6 +100,15 @@ public class KeyHandler implements KeyListener {
             }
             if(key_check == KeyEvent.VK_D){
                 d_pressed = false;
+            }
+            if(key_check == KeyEvent.VK_1){
+                one_pressed = false;
+            }
+            if(key_check == KeyEvent.VK_2){
+                two_pressed = false;
+            }
+            if(key_check == KeyEvent.VK_3){
+                three_pressed = false;
             }
         }
 
