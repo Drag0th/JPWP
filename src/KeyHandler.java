@@ -10,6 +10,7 @@ public class KeyHandler implements KeyListener {
     public static boolean one_pressed;
     public static boolean two_pressed;
     public static boolean three_pressed;
+    public static boolean e_pressed;
 
     GamePanel Game_Panel;
 
@@ -78,6 +79,15 @@ public class KeyHandler implements KeyListener {
             if(key_check == KeyEvent.VK_3){
                 three_pressed = true;
             }
+            if(key_check == KeyEvent.VK_E){
+                e_pressed = true;
+            }
+        }
+
+        if(Game_Panel.game_state == Game_Panel.day_summary_state) {
+            if(key_check == KeyEvent.VK_ENTER){
+                    Game_Panel.game_state = Game_Panel.gameplay_state;
+            }
         }
 
 
@@ -88,7 +98,7 @@ public class KeyHandler implements KeyListener {
 
         int key_check = e.getKeyCode();
 
-        if(Game_Panel.game_state == Game_Panel.gameplay_state){
+
             if(key_check == KeyEvent.VK_W){
                 w_pressed = false;
             }
@@ -110,7 +120,10 @@ public class KeyHandler implements KeyListener {
             if(key_check == KeyEvent.VK_3){
                 three_pressed = false;
             }
-        }
+            if(key_check == KeyEvent.VK_E){
+                e_pressed = false;
+            }
+
 
     }
 }

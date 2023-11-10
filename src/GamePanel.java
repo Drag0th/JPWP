@@ -11,8 +11,10 @@ public class GamePanel extends JPanel implements Runnable {
     final int main_menu_state = 3;
     final int gameplay_state = 4;
     final int data_state = 5;
+    final int day_summary_state = 6;
     //Mapa
     int map_number;
+    int day_number;
 
     Thread Game_Thread;
 
@@ -22,6 +24,7 @@ public class GamePanel extends JPanel implements Runnable {
     Player Player = new Player(this, Key_Handler, Map_Storage_And_Render, Tiles_Storage);
     MapChange Map_Change = new MapChange(Map_Storage_And_Render, Player, this);
     GUI GUI = new GUI(this, Player, Key_Handler);
+    DayCounter Day_Counter = new DayCounter(this, GUI, Player, Map_Storage_And_Render, Key_Handler);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
@@ -68,6 +71,8 @@ public class GamePanel extends JPanel implements Runnable {
         if(game_state == gameplay_state){
             Player.update();
             Map_Change.mapChangeCheck();
+            Day_Counter.bedChecker();
+
         }
     }
     public void paintComponent(Graphics g){
@@ -81,6 +86,9 @@ public class GamePanel extends JPanel implements Runnable {
             Map_Storage_And_Render.draw(g2d);
             GUI.drawPlayerGUI(g2d);
             Player.draw(g2d);
+        }
+        if(game_state == day_summary_state){
+            GUI.drawSleepMenu(g2d);
         }
     }
 

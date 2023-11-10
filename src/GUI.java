@@ -351,5 +351,27 @@ public class GUI {
         drawPlayerEnergyBar(g2d);
         drwaPlayerItemFrames(g2d);
     }
+    public void drawSleepMenu(Graphics2D g2d){
+        //Background
+        g2d.setColor(new Color(0, 0, 0));
+        g2d.fillRect(0,0, Game_Panel.screen_width, Game_Panel.screen_height);
+        //Title
+        g2d.setFont(new Font("Large_Bold", Font.BOLD, 96));
+        int x = 220;
+        int y = 100;
+        g2d.setColor(Color.WHITE);
+        g2d.drawString("Dzień: " + Game_Panel.day_number, x, y);
+        x = 105;
+        y = 220;
+        g2d.drawString("Zakończono", x, y);
+        //Options
+        Font Bold = new Font("Bold", Font.BOLD, 60);
+        //
+        g2d.setFont(Bold);
+        x = 225;
+        y = 320;
+        g2d.setColor(Color.RED);
+        g2d.drawString(">Kontynuuj", x, y);
+    }
 
 }

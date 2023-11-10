@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.awt.*;
 
 public class Player extends Entity {
-    int speed, map_x, map_y, energy = 100;
+    int speed, map_x, map_y, energy = 60;
     String direction;
     BufferedImage player_up_1, player_up_2, player_down_1, player_down_2, player_left_1, player_left_2, player_right_1, player_right_2;
     GamePanel Game_Panel;
