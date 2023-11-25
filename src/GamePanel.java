@@ -12,17 +12,19 @@ public class GamePanel extends JPanel implements Runnable {
     final int gameplay_state = 4;
     final int data_state = 5;
     final int day_summary_state = 6;
+    final int player_inventory_state = 7;
     //Mapa
     int map_number;
     int day_number;
 
     Thread Game_Thread;
-
     KeyHandler Key_Handler = new KeyHandler(this);
     TilesStorage Tiles_Storage = new TilesStorage();
     MapStorageAndRender Map_Storage_And_Render = new MapStorageAndRender(this, Tiles_Storage);
     Player Player = new Player(this, Key_Handler, Map_Storage_And_Render, Tiles_Storage);
     MapChange Map_Change = new MapChange(Map_Storage_And_Render, Player, this);
+    ItemList Item_List = new ItemList();
+    Inventory Inventory = new Inventory(Key_Handler, this, Item_List);
     GUI GUI = new GUI(this, Player, Key_Handler);
     DayCounter Day_Counter = new DayCounter(this, GUI, Player, Map_Storage_And_Render, Key_Handler);
 
@@ -72,7 +74,10 @@ public class GamePanel extends JPanel implements Runnable {
             Player.update();
             Map_Change.mapChangeCheck();
             Day_Counter.bedChecker();
-
+            Inventory.inventoryChecker();
+        }
+        if(game_state == player_inventory_state){
+            Inventory.updateInvetory();
         }
     }
     public void paintComponent(Graphics g){
@@ -86,9 +91,17 @@ public class GamePanel extends JPanel implements Runnable {
             Map_Storage_And_Render.draw(g2d);
             GUI.drawPlayerGUI(g2d);
             Player.draw(g2d);
+            Inventory.drawItemOnBelt(g2d);
         }
         if(game_state == day_summary_state){
             GUI.drawSleepMenu(g2d);
+        }
+        if(game_state == player_inventory_state){
+            Inventory.drawPlayerInventoryBackground(g2d);
+            Inventory.drawInventorySlots(g2d);
+            GUI.drawPlayerGUI(g2d);
+            Inventory.drawInvetory(g2d);
+            Inventory.drawItemOnBelt(g2d);
         }
     }
 
