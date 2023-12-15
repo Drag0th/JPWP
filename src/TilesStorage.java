@@ -59,6 +59,10 @@ Tile[] Tile;
             Tile[11] = new Tile();
             Tile[11].image = ImageIO.read(getClass().getResourceAsStream("res/titles/Bed_Down.png"));
             Tile[11].collision = true;
+            //Wet Soil -> 12
+            Tile[12] = new Tile();
+            Tile[12].image = ImageIO.read(getClass().getResourceAsStream("res/titles/Wet_soil.png"));
+            Tile[12].collision = false;
         }catch(IOException e){
             e.printStackTrace();
         }
