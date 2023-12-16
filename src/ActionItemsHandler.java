@@ -42,6 +42,9 @@ public class ActionItemsHandler {
             if(item_id == 4 && Player.energy > 0){
                 scytheUse(g2d);
             }
+            if(item_id == 2 && Player.energy > 0){
+                wheatSeedsUse(g2d);
+            }
 
         }
         if(Key_Handler.e_pressed == false){
@@ -78,7 +81,30 @@ public class ActionItemsHandler {
             }
         }
     }
+    public void wheatSeedsUse(Graphics2D g2d){
+        Player.energy -= 10;
+        if(Player.map_x >= 2 && Player.map_y >= 5) {
+            if(Player.map_x < 5) {
+                if (Plants.farming_plot_0[Player.map_x - 2][Player.map_y - 5] == 0) {
+                    Plants.farming_plot_0[Player.map_x - 2][Player.map_y - 5] = 1;
+                    Item_List.Item[2].amount--;
+                }
 
+            }
+            if(Player.map_x > 5 && Player.map_x < 10) {
+                if (Plants.farming_plot_1[Player.map_x - 6][Player.map_y - 5] == 0 ) {
+                    Plants.farming_plot_1[Player.map_x - 6][Player.map_y - 5] = 1;
+                    Item_List.Item[2].amount--;
+                }
+            }
+            if(Player.map_x > 9 && Player.map_x < 14) {
+                if (Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] == 0 ) {
+                    Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] = 1;
+                    Item_List.Item[2].amount--;
+                }
+            }
+        }
+    }
 
 
 }
