@@ -51,6 +51,9 @@ public class ActionItemsHandler {
             if(Item_List.Item[item_id].eatable == true && Player.energy < 100 && Item_List.Item[item_id].amount > 0 ){
                 eatItem(item_id);
             }
+            if(item_id == 7 && Player.energy > 0){
+                cabbageSeedsUse(g2d);
+            }
 
         }
         if(Key_Handler.e_pressed == false){
@@ -76,6 +79,10 @@ public class ActionItemsHandler {
                     Plants.farming_plot_0[Player.map_x - 2][Player.map_y - 5] = 0;
                     Item_List.Item[6].amount = Item_List.Item[6].amount + 5;
                 }
+                if (Plants.farming_plot_0[Player.map_x - 2][Player.map_y - 5] == 15) {
+                    Plants.farming_plot_0[Player.map_x - 2][Player.map_y - 5] = 0;
+                    Item_List.Item[8].amount = Item_List.Item[8].amount + 5;
+                }
             }
             if(Player.map_x > 5 && Player.map_x < 10) {
                 if (Plants.farming_plot_1[Player.map_x - 6][Player.map_y - 5] == 4 ) {
@@ -86,6 +93,10 @@ public class ActionItemsHandler {
                     Plants.farming_plot_1[Player.map_x - 6][Player.map_y - 5] = 0;
                     Item_List.Item[6].amount = Item_List.Item[6].amount + 5;
                 }
+                if (Plants.farming_plot_1[Player.map_x - 6][Player.map_y - 5] == 15 ) {
+                    Plants.farming_plot_1[Player.map_x - 6][Player.map_y - 5] = 0;
+                    Item_List.Item[8].amount = Item_List.Item[8].amount + 5;
+                }
             }
             if(Player.map_x > 9 && Player.map_x < 14) {
                 if (Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] == 4 ) {
@@ -95,6 +106,10 @@ public class ActionItemsHandler {
                 if (Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] == 11 ) {
                     Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] = 0;
                     Item_List.Item[6].amount = Item_List.Item[6].amount + 5;
+                }
+                if (Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] == 15 ) {
+                    Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] = 0;
+                    Item_List.Item[8].amount = Item_List.Item[8].amount + 5;
                 }
             }
         }
@@ -150,6 +165,30 @@ public class ActionItemsHandler {
     public void eatItem(int item_id){
         Player.energy = Player.energy + Item_List.Item[item_id].energy_gain;
         Item_List.Item[item_id].amount--;
+    }
+    public void cabbageSeedsUse(Graphics2D g2d){
+        Player.energy -= 10;
+        if(Player.map_x >= 2 && Player.map_y >= 5) {
+            if(Player.map_x < 5) {
+                if (Plants.farming_plot_0[Player.map_x - 2][Player.map_y - 5] == 0) {
+                    Plants.farming_plot_0[Player.map_x - 2][Player.map_y - 5] = 12;
+                    Item_List.Item[7].amount--;
+                }
+
+            }
+            if(Player.map_x > 5 && Player.map_x < 10) {
+                if (Plants.farming_plot_1[Player.map_x - 6][Player.map_y - 5] == 0 ) {
+                    Plants.farming_plot_1[Player.map_x - 6][Player.map_y - 5] = 12;
+                    Item_List.Item[7].amount--;
+                }
+            }
+            if(Player.map_x > 9 && Player.map_x < 14) {
+                if (Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] == 0 ) {
+                    Plants.farming_plot_2[Player.map_x - 10][Player.map_y - 5] = 12;
+                    Item_List.Item[7].amount--;
+                }
+            }
+        }
     }
 
 }

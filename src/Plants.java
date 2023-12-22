@@ -53,6 +53,14 @@ public class Plants {
             plants_image[10] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage5.png"));
             //Tomato_stage 6 -> 11
             plants_image[11] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage6.png"));
+            //Cabbage_stage 0 -> 12
+            plants_image[12] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Cabbage/cabbage_stage0.png"));
+            //Cabbage_stage 1 -> 13
+            plants_image[13] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Cabbage/cabbage_stage1.png"));
+            //Cabbage_stage 2 -> 14
+            plants_image[14] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Cabbage/cabbage_stage2.png"));
+            //Cabbage_stage 3 -> 15
+            plants_image[15] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Cabbage/cabbage_stage3.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -101,6 +109,19 @@ public class Plants {
                             farming_plot_0[i][j] = 11;
                             Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
                         }
+                        //Cabbage
+                        if(farming_plot_0[i][j] == 12 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
+                            farming_plot_0[i][j] = 13;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
+                        if(farming_plot_0[i][j] == 13 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
+                            farming_plot_0[i][j] = 14;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
+                        if(farming_plot_0[i][j] == 14 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
+                            farming_plot_0[i][j] = 15;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
                     else{
 
                     }
@@ -144,6 +165,19 @@ public class Plants {
                         farming_plot_1[i][j] = 11;
                         Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
                     }
+                    //Cabbage
+                    if(farming_plot_1[i][j] == 12 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12 ){
+                        farming_plot_1[i][j] = 13;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
+                    }
+                    if(farming_plot_1[i][j] == 13 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12){
+                        farming_plot_1[i][j] = 14;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
+                    }
+                    if(farming_plot_1[i][j] ==14 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12){
+                        farming_plot_1[i][j] = 15;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
+                    }
                     else{
 
                     }
@@ -185,6 +219,19 @@ public class Plants {
                     }
                     if(farming_plot_2[i][j] == 10 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
                         farming_plot_2[i][j] = 11;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
+                    }
+                    //Cabbage
+                    if(farming_plot_2[i][j] == 12 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12 ){
+                        farming_plot_2[i][j] = 13;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
+                    }
+                    if(farming_plot_2[i][j] == 13 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
+                        farming_plot_2[i][j] = 14;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
+                    }
+                    if(farming_plot_2[i][j] == 14 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
+                        farming_plot_2[i][j] = 15;
                         Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
                     }
                     else{

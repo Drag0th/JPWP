@@ -68,6 +68,22 @@ public class ItemList {
             Item[6].eatable = true;
             Item[6].usable = false;
             Item[6].energy_gain = 5;
+            //Cabbage_seeds -> 7
+            Item[7] = new Item();
+            Item[7].name = "Nasiona kapusty";
+            Item[7].image = ImageIO.read(getClass().getResourceAsStream("res/Items/cabbage_seeds.png"));
+            Item[7].amount = 10;
+            Item[7].eatable = false;
+            Item[7].usable = true;
+            Item[7].energy_gain = 0;
+            //Cabbage -> 8
+            Item[8] = new Item();
+            Item[8].name = "Kapusta";
+            Item[8].image = ImageIO.read(getClass().getResourceAsStream("res/Items/cabbage.png"));
+            Item[8].amount = 0;
+            Item[8].eatable = true;
+            Item[8].usable = false;
+            Item[8].energy_gain = 5;
 
         }catch(
         IOException e){
