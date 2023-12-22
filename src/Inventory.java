@@ -33,7 +33,7 @@ public class Inventory {
         inventory_grid = new int[][]{
                 {1, 2, 4, 3},
                 {5, 6, 7, 8},
-                {0, 0, 0, 0},
+                {9, 10, 11, 0},
         };
         Tile = new Tile[9];
         getInventoryImage();

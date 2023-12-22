@@ -165,6 +165,9 @@ public class ActionItemsHandler {
     public void eatItem(int item_id){
         Player.energy = Player.energy + Item_List.Item[item_id].energy_gain;
         Item_List.Item[item_id].amount--;
+        if(Player.energy > 100){
+            Player.energy = 100;
+        }
     }
     public void cabbageSeedsUse(Graphics2D g2d){
         Player.energy -= 10;

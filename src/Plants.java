@@ -12,19 +12,19 @@ public class Plants {
         this.Map_Storage_And_Render = Map_Storage_And_Render;
         plants_image = new BufferedImage[20];
         farming_plot_0 = new int[][]{
-                {10, 0, 0},
-                {0, 10, 0},
-                {0, 0, 10}
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
         };
         farming_plot_1 = new int[][]{
-                {11, 0, 0},
-                {0, 11, 0},
-                {0, 0, 10}
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
         };
         farming_plot_2 = new int[][]{
-                {11, 11, 0},
-                {0, 10, 0},
-                {0, 0, 10}
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
         };
         getTileImage();
     }

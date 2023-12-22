@@ -40,7 +40,7 @@ public class ItemList {
             Item[3] = new Item();
             Item[3].name = "Pszenica";
             Item[3].image = ImageIO.read(getClass().getResourceAsStream("res/Items/wheat.png"));
-            Item[3].amount = 0;
+            Item[3].amount = 10;
             Item[3].eatable = true;
             Item[3].usable = false;
             Item[3].energy_gain = 5;
@@ -64,7 +64,7 @@ public class ItemList {
             Item[6] = new Item();
             Item[6].name = "Pomidor";
             Item[6].image = ImageIO.read(getClass().getResourceAsStream("res/Items/tomato.png"));
-            Item[6].amount = 0;
+            Item[6].amount = 10;
             Item[6].eatable = true;
             Item[6].usable = false;
             Item[6].energy_gain = 5;
@@ -80,10 +80,34 @@ public class ItemList {
             Item[8] = new Item();
             Item[8].name = "Kapusta";
             Item[8].image = ImageIO.read(getClass().getResourceAsStream("res/Items/cabbage.png"));
-            Item[8].amount = 0;
+            Item[8].amount = 10;
             Item[8].eatable = true;
             Item[8].usable = false;
             Item[8].energy_gain = 5;
+            //Salad -> 9
+            Item[9] = new Item();
+            Item[9].name = "Salataka";
+            Item[9].image = ImageIO.read(getClass().getResourceAsStream("res/Items/Salad.png"));
+            Item[9].amount = 0;
+            Item[9].eatable = true;
+            Item[9].usable = false;
+            Item[9].energy_gain = 25;
+            //Spaghetti -> 10
+            Item[10] = new Item();
+            Item[10].name = "Spaghetti";
+            Item[10].image = ImageIO.read(getClass().getResourceAsStream("res/Items/Spaghetti.png"));
+            Item[10].amount = 0;
+            Item[10].eatable = true;
+            Item[10].usable = false;
+            Item[10].energy_gain = 25;
+            //Bread -> 11
+            Item[11] = new Item();
+            Item[11].name = "Chleb";
+            Item[11].image = ImageIO.read(getClass().getResourceAsStream("res/Items/Bread.png"));
+            Item[11].amount = 0;
+            Item[11].eatable = true;
+            Item[11].usable = false;
+            Item[11].energy_gain = 15;
 
         }catch(
         IOException e){

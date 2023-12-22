@@ -84,6 +84,9 @@ public class GamePanel extends JPanel implements Runnable {
         if(game_state == player_inventory_state){
             Inventory.updateInvetory();
         }
+        if(game_state == cooking_state){
+            Cooking.stoveCursorHandler();
+        }
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -121,6 +124,8 @@ public class GamePanel extends JPanel implements Runnable {
             Inventory.drawPlayerInventoryBackground(g2d);
             GUI.drawPlayerGUI(g2d);
             Inventory.drawItemOnBelt(g2d);
+            Cooking.drawRecipeFrames(g2d);
+            Cooking.drawRecipeItems(g2d);
         }
     }
 
