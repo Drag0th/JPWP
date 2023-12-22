@@ -11,9 +11,10 @@ public class ActionItemsHandler {
     GUI GUI;
     KeyHandler Key_Handler;
     Plants Plants;
+    Data Data;
     boolean button_pressed = false;
 
-    public ActionItemsHandler(Inventory Inventory, ItemList Item_List, GamePanel Game_Panel, MapStorageAndRender Map_Storage_And_Render, Player Player, GUI GUI, KeyHandler Key_Handler, Plants Plants){
+    public ActionItemsHandler(Inventory Inventory, ItemList Item_List, GamePanel Game_Panel, MapStorageAndRender Map_Storage_And_Render, Player Player, GUI GUI, KeyHandler Key_Handler, Plants Plants, Data Data){
         this.Inventory = Inventory;
         this.Item_List = Item_List;
         this.Game_Panel = Game_Panel;
@@ -22,6 +23,7 @@ public class ActionItemsHandler {
         this.GUI = GUI;
         this.Key_Handler = Key_Handler;
         this.Plants = Plants;
+        this.Data = Data;
     }
 
     public void useItem(Graphics2D g2d){
@@ -167,6 +169,24 @@ public class ActionItemsHandler {
         Item_List.Item[item_id].amount--;
         if(Player.energy > 100){
             Player.energy = 100;
+        }
+        if(item_id == 3){
+            Data.Wheat_counter++;
+        }
+        if(item_id == 6){
+            Data.Tomato_Counter++;
+        }
+        if(item_id == 8){
+            Data.Cabbage_counter++;
+        }
+        if(item_id == 9){
+            Data.Salad_counter++;
+        }
+        if(item_id == 10){
+            Data.Spaghetti_counter++;
+        }
+        if(item_id == 11){
+            Data.Bread_counter++;
         }
     }
     public void cabbageSeedsUse(Graphics2D g2d){

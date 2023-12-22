@@ -87,6 +87,9 @@ public class KeyHandler implements KeyListener {
             if(key_check == KeyEvent.VK_I){
                 i_pressed = true;
             }
+            if(key_check == KeyEvent.VK_ESCAPE){
+                Game_Panel.game_state = 0;
+            }
         }
 
         if(Game_Panel.game_state == Game_Panel.day_summary_state) {
@@ -133,6 +136,11 @@ public class KeyHandler implements KeyListener {
             }
             if(key_check == KeyEvent.VK_ENTER){
                 enter_pressed = true;
+            }
+        }
+        if(Game_Panel.game_state == Game_Panel.data_state) {
+            if(key_check == KeyEvent.VK_ESCAPE){
+                Game_Panel.game_state = 1;
             }
         }
 

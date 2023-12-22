@@ -6,7 +6,6 @@ public class GameWindow {
     public GameWindow() {
 
         JFrame Game_Window = new JFrame();
-        Game_Window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Game_Window.setResizable(false);
         Game_Window.setTitle("Farma");
         GamePanel Game_Panel = new GamePanel();

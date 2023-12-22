@@ -11,7 +11,7 @@ public class Cooking {
     KeyHandler Key_Handler;
     ItemList Item_List;
     BufferedImage[] Item_Frames;
-    int  inventory_y = 0, recipe_id = 0;
+    int  inventory_y = 0;
     boolean button_pressed = false;
     public Cooking(GamePanel Game_Panel, Player Player, MapStorageAndRender Map_Storage_And_Render, KeyHandler Key_Handler , ItemList Item_List){
         this.Game_Panel = Game_Panel;
@@ -77,11 +77,11 @@ public class Cooking {
                 button_pressed = true;
             }
         }
-        if((inventory_y > 0) && (inventory_y <= 2) && (button_pressed == false) ) {
+        if((inventory_y >= 0) && (inventory_y <= 2) && (button_pressed == false) ) {
             if(Key_Handler.enter_pressed == true){
                 if(inventory_y == 0 && Item_List.Item[3].amount > 0 && (button_pressed == false)){
                     Item_List.Item[3].amount--;
-                    Item_List.Item[15].amount++;
+                    Item_List.Item[11].amount++;
 
                 }
                 if(inventory_y == 1 && Item_List.Item[3].amount > 0 && Item_List.Item[6].amount > 0 && (button_pressed == false)){
@@ -116,9 +116,6 @@ public class Cooking {
         g2d.drawImage(Item_List.Item[8].image, 268, 318, 48, 48, null);
         g2d.drawImage(Item_List.Item[0].image, 436, 318, 48, 48, null);
         g2d.drawImage(Item_List.Item[9].image, 604, 318, 48, 48, null);
-    }
-    public void craftItem() {
-
     }
 }
 

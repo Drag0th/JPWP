@@ -29,7 +29,8 @@ public class GamePanel extends JPanel implements Runnable {
     GUI GUI = new GUI(this, Player, Key_Handler);
     DayCounter Day_Counter = new DayCounter(this, GUI, Player, Map_Storage_And_Render, Key_Handler);
     Plants Plants = new Plants(Map_Storage_And_Render);
-    ActionItemsHandler Action_Items_Handler = new ActionItemsHandler(Inventory, Item_List, this, Map_Storage_And_Render, Player, GUI, Key_Handler, Plants);
+    Data Data = new Data(this);
+    ActionItemsHandler Action_Items_Handler = new ActionItemsHandler(Inventory, Item_List, this, Map_Storage_And_Render, Player, GUI, Key_Handler, Plants, Data);
     Cooking Cooking = new Cooking(this, Player, Map_Storage_And_Render, Key_Handler, Item_List);
 
     public GamePanel() {
@@ -126,6 +127,10 @@ public class GamePanel extends JPanel implements Runnable {
             Inventory.drawItemOnBelt(g2d);
             Cooking.drawRecipeFrames(g2d);
             Cooking.drawRecipeItems(g2d);
+        }
+        if(game_state == data_state){
+            GUI.drawDataMenu(g2d);
+            Data.drawData(g2d);
         }
     }
 

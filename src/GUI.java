@@ -373,5 +373,24 @@ public class GUI {
         g2d.setColor(Color.RED);
         g2d.drawString(">Kontynuuj", x, y);
     }
+    public void drawDataMenu(Graphics2D g2d){
+        //Background
+        g2d.setColor(new Color(0,71,171));
+        g2d.fillRect(0,0, Game_Panel.screen_width, Game_Panel.screen_height);
+        //Title
+        g2d.setFont(new Font("Large_Bold", Font.BOLD, 60));
+        int x = 160;
+        int y = 100;
+        g2d.setColor(Color.WHITE);
+        g2d.drawString("Ilosc zjedzonych:", x, y);
+        //Options
+        Font Bold = new Font("Bold", Font.BOLD, 60);
+        //
+        g2d.setFont(Bold);
+        x = 225;
+        y = 520;
+        g2d.setColor(Color.RED);
+        g2d.drawString(">Kontynuuj", x, y);
+    }
 
 }
