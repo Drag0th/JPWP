@@ -12,6 +12,7 @@ public class KeyHandler implements KeyListener {
     public static boolean three_pressed;
     public static boolean e_pressed;
     public static boolean i_pressed;
+    public static boolean enter_pressed;
 
     GamePanel Game_Panel;
 
@@ -120,6 +121,20 @@ public class KeyHandler implements KeyListener {
                 three_pressed = true;
             }
         }
+        if(Game_Panel.game_state == Game_Panel.cooking_state) {
+            if(key_check == KeyEvent.VK_ESCAPE){
+                Game_Panel.game_state = Game_Panel.gameplay_state;
+            }
+            if(key_check == KeyEvent.VK_W){
+                w_pressed = true;
+            }
+            if(key_check == KeyEvent.VK_S){
+                s_pressed = true;
+            }
+            if(key_check == KeyEvent.VK_ENTER){
+                enter_pressed = true;
+            }
+        }
 
 
     }
@@ -156,6 +171,9 @@ public class KeyHandler implements KeyListener {
             }
             if(key_check == KeyEvent.VK_I){
                 i_pressed = false;
+            }
+            if(key_check == KeyEvent.VK_ENTER){
+                enter_pressed = false;
             }
 
 

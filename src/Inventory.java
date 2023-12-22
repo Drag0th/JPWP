@@ -32,7 +32,7 @@ public class Inventory {
         };
         inventory_grid = new int[][]{
                 {1, 2, 4, 3},
-                {0, 0, 0, 0},
+                {5, 6, 0, 0},
                 {0, 0, 0, 0},
         };
         Tile = new Tile[9];

@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int data_state = 5;
     final int day_summary_state = 6;
     final int player_inventory_state = 7;
+    final int cooking_state = 8;
     //Mapa
     int map_number;
     int day_number;
@@ -29,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     DayCounter Day_Counter = new DayCounter(this, GUI, Player, Map_Storage_And_Render, Key_Handler);
     Plants Plants = new Plants(Map_Storage_And_Render);
     ActionItemsHandler Action_Items_Handler = new ActionItemsHandler(Inventory, Item_List, this, Map_Storage_And_Render, Player, GUI, Key_Handler, Plants);
+    Cooking Cooking = new Cooking(this, Player, Map_Storage_And_Render, Key_Handler, Item_List);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
@@ -77,6 +79,7 @@ public class GamePanel extends JPanel implements Runnable {
             Map_Change.mapChangeCheck();
             Day_Counter.bedChecker();
             Inventory.inventoryChecker();
+            Cooking.stoveChecker();
         }
         if(game_state == player_inventory_state){
             Inventory.updateInvetory();
@@ -112,6 +115,11 @@ public class GamePanel extends JPanel implements Runnable {
             Inventory.drawInventorySlots(g2d);
             GUI.drawPlayerGUI(g2d);
             Inventory.drawInvetory(g2d);
+            Inventory.drawItemOnBelt(g2d);
+        }
+        if(game_state == cooking_state){
+            Inventory.drawPlayerInventoryBackground(g2d);
+            GUI.drawPlayerGUI(g2d);
             Inventory.drawItemOnBelt(g2d);
         }
     }

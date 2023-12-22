@@ -12,19 +12,19 @@ public class Plants {
         this.Map_Storage_And_Render = Map_Storage_And_Render;
         plants_image = new BufferedImage[20];
         farming_plot_0 = new int[][]{
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
+                {10, 0, 0},
+                {0, 10, 0},
+                {0, 0, 10}
         };
         farming_plot_1 = new int[][]{
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
+                {11, 0, 0},
+                {0, 11, 0},
+                {0, 0, 10}
         };
         farming_plot_2 = new int[][]{
-                {1, 0, 0},
-                {0, 1, 0},
-                {0, 0, 1}
+                {11, 11, 0},
+                {0, 10, 0},
+                {0, 0, 10}
         };
         getTileImage();
     }
@@ -39,6 +39,20 @@ public class Plants {
             plants_image[3] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Wheat/wheat_stage2.png"));
             //Wheat_stage 4 -> 4
             plants_image[4] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Wheat/wheat_stage3.png"));
+            //Tomato_stage 0 -> 5
+            plants_image[5] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage0.png"));
+            //Tomato_stage 1 -> 6
+            plants_image[6] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage1.png"));
+            //Tomato_stage 2 -> 6
+            plants_image[7] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage2.png"));
+            //Tomato_stage 3 -> 8
+            plants_image[8] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage3.png"));
+            //Tomato_stage 4 -> 9
+            plants_image[9] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage4.png"));
+            //Tomato_stage 5 -> 10
+            plants_image[10] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage5.png"));
+            //Tomato_stage 6 -> 11
+            plants_image[11] = ImageIO.read(getClass().getResourceAsStream("res/Plants/Tomato/tomato_stage6.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,6 +63,7 @@ public class Plants {
         for(int j = 0 ; j < 3; j++){
             for(int i = 0 ; i < 3 ; i++){
                 if(farming_plot_0[i][j] != 0){
+                        //Wheat
                         if(farming_plot_0[i][j] == 1 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
                             farming_plot_0[i][j] = 2;
                             Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
@@ -60,13 +75,38 @@ public class Plants {
                         if(farming_plot_0[i][j] == 3 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
                             farming_plot_0[i][j] = 4;
                             Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
-
-                    }
+                        }
+                        //Tomato
+                        if(farming_plot_0[i][j] == 5 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
+                            farming_plot_0[i][j] = 6;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
+                        if(farming_plot_0[i][j] == 6 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12 ){
+                            farming_plot_0[i][j] = 7;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
+                        if(farming_plot_0[i][j] == 7 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
+                            farming_plot_0[i][j] = 8;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
+                        if(farming_plot_0[i][j] == 8 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
+                            farming_plot_0[i][j] = 9;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
+                        if(farming_plot_0[i][j] == 9 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
+                            farming_plot_0[i][j] = 10;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
+                        if(farming_plot_0[i][j] == 10 && Map_Storage_And_Render.Map[1][j+5][i+2] == 12){
+                            farming_plot_0[i][j] = 11;
+                            Map_Storage_And_Render.Map[1][j+5][i+2] = 9;
+                        }
                     else{
 
                     }
                 }
                 if(farming_plot_1[i][j] != 0){
+                    //Wheat
                     if(farming_plot_1[i][j] == 1 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12){
                         farming_plot_1[i][j] = 2;
                         Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
@@ -78,13 +118,38 @@ public class Plants {
                     if(farming_plot_1[i][j] == 3 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12){
                         farming_plot_1[i][j] = 4;
                         Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
-
+                    }
+                    //Tomato
+                    if(farming_plot_1[i][j] == 5 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12){
+                        farming_plot_1[i][j] = 6;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
+                    }
+                    if(farming_plot_1[i][j] == 6 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12 ){
+                        farming_plot_1[i][j] = 7;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
+                    }
+                    if(farming_plot_1[i][j] == 7 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12){
+                        farming_plot_1[i][j] = 8;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
+                    }
+                    if(farming_plot_1[i][j] == 8 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12 ){
+                        farming_plot_1[i][j] = 9;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
+                    }
+                    if(farming_plot_1[i][j] == 9 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12){
+                        farming_plot_1[i][j] = 10;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
+                    }
+                    if(farming_plot_1[i][j] ==10 && Map_Storage_And_Render.Map[1][j+5][i+6] == 12){
+                        farming_plot_1[i][j] = 11;
+                        Map_Storage_And_Render.Map[1][j+5][i+6] = 9;
                     }
                     else{
 
                     }
                 }
                 if(farming_plot_2[i][j] != 0){
+                    //Wheat
                     if(farming_plot_2[i][j] == 1 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
                         farming_plot_2[i][j] = 2;
                         Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
@@ -96,7 +161,31 @@ public class Plants {
                     if(farming_plot_2[i][j] == 3 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
                         farming_plot_2[i][j] = 4;
                         Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
-
+                    }
+                    //Tomato
+                    if(farming_plot_2[i][j] == 5 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
+                        farming_plot_2[i][j] = 6;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
+                    }
+                    if(farming_plot_2[i][j] == 6 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12 ){
+                        farming_plot_2[i][j] = 7;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
+                    }
+                    if(farming_plot_2[i][j] == 7 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
+                        farming_plot_2[i][j] = 8;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
+                    }
+                    if(farming_plot_2[i][j] == 8 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12 ){
+                        farming_plot_2[i][j] = 9;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
+                    }
+                    if(farming_plot_2[i][j] == 9 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
+                        farming_plot_2[i][j] = 10;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
+                    }
+                    if(farming_plot_2[i][j] == 10 && Map_Storage_And_Render.Map[1][j+5][i+10] == 12){
+                        farming_plot_2[i][j] = 11;
+                        Map_Storage_And_Render.Map[1][j+5][i+10] = 9;
                     }
                     else{
 
