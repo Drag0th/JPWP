@@ -2,13 +2,23 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Klasa tworzaca zbior blokow w grze
+ */
 public class TilesStorage {
 Tile[] Tile;
+
+    /**
+     * Konsturktor
+     */
     public TilesStorage(){
         Tile = new Tile[49];
         getTileImage();
     }
 
+    /**
+     * Klasa pobierajaca i tworzace bloki
+     */
     public void getTileImage(){
         try{
             //Wooden Floor -> 0

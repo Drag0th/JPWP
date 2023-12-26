@@ -1,11 +1,19 @@
 import java.awt.*;
 
+/**
+ * Klasa odpowiedzialna za wyswietlanie i przetrzymywanie map
+ */
 public class MapStorageAndRender {
 
     GamePanel Game_Panel;
     TilesStorage Tiles_Storage;
     int[][][] Map;
 
+    /**
+     * Konsturktor
+     * @param Game_Panel obiekt
+     * @param Tiles_Storage obiekt
+     */
     public MapStorageAndRender(GamePanel Game_Panel, TilesStorage Tiles_Storage){
 
         this.Tiles_Storage = Tiles_Storage;
@@ -36,6 +44,10 @@ public class MapStorageAndRender {
            {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6}}};
     }
 
+    /**
+     * Metoda odpowiedzialna za rysowanie mapy
+     * @param title obiekt
+     */
     public void draw(Graphics2D title){
 
     int x = 0, y = 0;

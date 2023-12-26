@@ -3,11 +3,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Klasa odpowiedzialna za rosliny
+ */
 public class Plants {
     MapStorageAndRender Map_Storage_And_Render;
     int[][] farming_plot_0, farming_plot_1, farming_plot_2;
     BufferedImage[] plants_image;
 
+    /**
+     * Konstruktor
+     * @param Map_Storage_And_Render obiekt
+     */
     public Plants(MapStorageAndRender Map_Storage_And_Render){
         this.Map_Storage_And_Render = Map_Storage_And_Render;
         plants_image = new BufferedImage[20];
@@ -29,6 +36,9 @@ public class Plants {
         getTileImage();
     }
 
+    /**
+     * Metoda odpowiedzialna za pobranie grafik
+     */
     public void getTileImage() {
         try {
             //Wheat_stage 0 -> 1
@@ -67,6 +77,9 @@ public class Plants {
         }
     }
 
+    /**
+     * Metoda akutalizujaca rosliny
+     */
     public void checkPlants(){
         for(int j = 0 ; j < 3; j++){
             for(int i = 0 ; i < 3 ; i++){
@@ -243,6 +256,10 @@ public class Plants {
         }
     }
 
+    /**
+     * Metoda rysujaca rosliny
+     * @param g2d obiekt
+     */
     public void drawPlants(Graphics2D g2d){
         for(int j = 0 ; j < 3; j++){
             for(int i = 0 ; i < 3 ; i++){

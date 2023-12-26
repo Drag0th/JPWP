@@ -1,5 +1,21 @@
-
-
+/**
+ * Klasa pomocnicza
+ */
 public class Entity {
-    public int x, y, animation_counter, animation_number;
+    /**
+     * zmienna
+     */
+    public int x;
+    /**
+     * zmienna
+     */
+    public int y;
+    /**
+     * zmienna
+     */
+    public int animation_counter;
+    /**
+     * zmienna
+     */
+    public int animation_number;
 }

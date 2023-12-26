@@ -1,21 +1,60 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Klasa obslugujaca klawisze
+ */
 public class KeyHandler implements KeyListener {
-
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean w_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean s_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean a_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean d_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean one_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean two_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean three_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean e_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean i_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
     public static boolean enter_pressed;
+    /**
+     * zmienna sprawdzajaca wcisniecie klawisza
+     */
 
     GamePanel Game_Panel;
 
+    /**
+     * Konstruktor
+     * @param Game_Panel obiekt
+     */
     public KeyHandler(GamePanel Game_Panel){
         this.Game_Panel = Game_Panel;
     }

@@ -3,6 +3,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Klasa odpowiadajaca za system ekwipunku
+ */
 public class Inventory {
     int inventory_x = 0, inventory_y = 0, item_id_0, item_id_1, item_id_2;
     ItemList Item_List;
@@ -14,6 +17,12 @@ public class Inventory {
     BufferedImage[] Item_Frames;
     boolean button_pressed = false;
 
+    /**
+     * Konstruktor
+     * @param Key_Handler obiekt
+     * @param Game_Panel obiekt
+     * @param Item_List obiekt
+     */
     public Inventory(KeyHandler Key_Handler, GamePanel Game_Panel, ItemList Item_List){
         this.Item_List = Item_List;
         this.Key_Handler = Key_Handler;
@@ -41,6 +50,9 @@ public class Inventory {
         getItemFrames();
     }
 
+    /**
+     * Metoda pobierajca grafike ekwipunku
+     */
     public void getInventoryImage(){
         try{
             //Player_GUI
@@ -67,6 +79,9 @@ public class Inventory {
         }
     }
 
+    /**
+     * Metoda pobierajaca grafike ramek
+     */
     public void getItemFrames(){
         try{
             Item_Frames[0] = ImageIO.read(getClass().getResourceAsStream("res/Player_GUI/Item_Frame/selected_item_frame.png"));
@@ -76,6 +91,10 @@ public class Inventory {
         }
     }
 
+    /**
+     * Metoda rysujace tlo ekwipunku
+     * @param g2d obiekt
+     */
     public void drawPlayerInventoryBackground(Graphics2D g2d){
         int x = 0, y = 0;
 
@@ -88,12 +107,20 @@ public class Inventory {
             y = y + 48;
         }
     }
+
+    /**
+     * Metoda odpowiedzialna za kursor w ekwipunku
+     * @param g2d obiekt
+     */
     public void drawPlayerInventoryCursor(Graphics2D g2d){
         g2d.drawImage(Item_Frames[0], 168*inventory_x+100, 120*inventory_y+78, 48, 48, null);
     }
 
-    
 
+    /**
+     * Metoda odpowiedzialna rysowanie ramek na przedmiot.
+     * @param g2d obiekt
+     */
     public void drawInventorySlots(Graphics2D g2d){
         int x = 100, y = 78;
         for(int j = 0 ; j < 3 ; j++) {
@@ -106,12 +133,18 @@ public class Inventory {
         }
     }
 
+    /**
+     * Metoda sprawdzajaca czy trzeba przelaczyc sie miedzy ekwipunkiem a plansza
+     */
     public void inventoryChecker(){
         if(Key_Handler.i_pressed == true){
             Game_Panel.game_state = Game_Panel.player_inventory_state;
         }
     }
 
+    /**
+     * Metoda akutalizujaca kursor w ewkipunku
+     */
     public void inventoryCursorUpdate(){
         if((inventory_y >= 0) && (inventory_y < 2) && (button_pressed == false)) {
             if(Key_Handler.s_pressed == true){
@@ -142,6 +175,10 @@ public class Inventory {
         }
     }
 
+    /**
+     * Metoda wsywietlajaca ikony przedmiotow
+     * @param g2d obiekt
+     */
     public void drawInventoryItems(Graphics2D g2d){
         int x = 100, y = 78;
         for(int j = 0 ; j < 3 ; j++) {
@@ -159,6 +196,9 @@ public class Inventory {
         }
     }
 
+    /**
+     * Metoda przypisujaca przedmiot do paska przedmiotow
+     */
     public void  assignItemToBelt(){
         if(Key_Handler.one_pressed == true){
             item_id_0 = inventory_grid[inventory_y][inventory_x];
@@ -171,6 +211,10 @@ public class Inventory {
         }
     }
 
+    /**
+     * Metoda wyswietlajaca przedmioty na pasku
+     * @param g2d obiekt
+     */
     public void drawItemOnBelt(Graphics2D g2d){
         int x = 248, y = 504;
         g2d.drawImage(Item_List.Item[item_id_0].image, x, y, 48, 48, null);
@@ -180,6 +224,10 @@ public class Inventory {
         g2d.drawImage(Item_List.Item[item_id_2].image, x, y, 48, 48, null);
     }
 
+    /**
+     * Metoda rysujaca ekwipunek
+     * @param g2d obiekt
+     */
     public void drawInvetory(Graphics2D g2d){
         drawPlayerInventoryBackground(g2d);
         drawInventorySlots(g2d);
@@ -187,6 +235,9 @@ public class Inventory {
         drawInventoryItems(g2d);
     }
 
+    /**
+     * Metoda akutalizujaca ekwipunek
+     */
     public void updateInvetory(){
         inventoryCursorUpdate();
         assignItemToBelt();

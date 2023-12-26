@@ -1,15 +1,24 @@
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
+/**
+ * Klasa tworzaca zbior przedmiotow
+ */
 public class ItemList {
 
     Item[] Item;
 
+    /**
+     * Konstruktor
+     */
     public  ItemList(){
         Item = new Item[20];
         getItemData();
     }
 
+    /**
+     * Metoda tworzaca zbior przedmiotow
+     */
     public void getItemData(){
         try{
             //Empty Slot -> 0

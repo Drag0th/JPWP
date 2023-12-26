@@ -2,7 +2,13 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.IOException;
 
+/**
+ * Klasa odpowiadajaca za okno gry
+ */
 public class GameWindow {
+    /**
+     * Konstruktor
+     */
     public GameWindow() {
 
         JFrame Game_Window = new JFrame();

@@ -2,37 +2,115 @@ import javax.swing.*;
 import java.awt.*;
 import java.security.Key;
 
+/**
+ * Klasa odpowiadajaca za wyswietlanie
+ */
 public class GamePanel extends JPanel implements Runnable {
     // Rozdzielczosc gry
+    /**
+     * Szerokosc okna gry
+     */
     final int screen_width = 768;
+    /**
+     * Wysokosc okna gry
+     */
     final int screen_height = 576;
     //Stan gry
     int game_state;
     final int main_menu_state = 3;
+    /**
+     * stala stanu rozgrywki
+     */
     final int gameplay_state = 4;
+    /**
+     * stala stanu wyswietlania danych
+     */
     final int data_state = 5;
+    /**
+     * stala stanu podsumowania dnia
+     */
     final int day_summary_state = 6;
+    /**
+     * stala stanu ekwipunku
+     */
     final int player_inventory_state = 7;
+    /**
+     * stala stanu menu gotowania
+     */
     final int cooking_state = 8;
     //Mapa
+    /**
+     * zmienna
+     */
     int map_number;
+    /**
+     * zmienna
+     */
     int day_number;
+    /**
+     * zmienna
+     */
     boolean plants_checked = false;
+    /**
+     * Stworzenie obiektu
+     */
     Thread Game_Thread;
+    /**
+     * Stworzenie obiektu
+     */
     KeyHandler Key_Handler = new KeyHandler(this);
+    /**
+     * Stworzenie obiektu
+     */
     TilesStorage Tiles_Storage = new TilesStorage();
+    /**
+     * Stworzenie obiektu
+     */
     MapStorageAndRender Map_Storage_And_Render = new MapStorageAndRender(this, Tiles_Storage);
+    /**
+     * Stworzenie obiektu
+     */
     Player Player = new Player(this, Key_Handler, Map_Storage_And_Render, Tiles_Storage);
+    /**
+     * Stworzenie obiektu
+     */
     MapChange Map_Change = new MapChange(Map_Storage_And_Render, Player, this);
+    /**
+     * Stworzenie obiektu
+     */
     ItemList Item_List = new ItemList();
+    /**
+     * Stworzenie obiektu
+     */
     Inventory Inventory = new Inventory(Key_Handler, this, Item_List);
+    /**
+     * Stworzenie obiektu
+     */
     GUI GUI = new GUI(this, Player, Key_Handler);
+    /**
+     * Stworzenie obiektu
+     */
     DayCounter Day_Counter = new DayCounter(this, GUI, Player, Map_Storage_And_Render, Key_Handler);
+    /**
+     * Stworzenie obiektu
+     */
     Plants Plants = new Plants(Map_Storage_And_Render);
+    /**
+     * Stworzenie obiektu
+     */
     Data Data = new Data(this);
+    /**
+     * Stworzenie obiektu
+     */
     ActionItemsHandler Action_Items_Handler = new ActionItemsHandler(Inventory, Item_List, this, Map_Storage_And_Render, Player, GUI, Key_Handler, Plants, Data);
+    /**
+     * Stworzenie obiektu
+     */
     Cooking Cooking = new Cooking(this, Player, Map_Storage_And_Render, Key_Handler, Item_List);
 
+    /**
+     * Konsturktor
+     */
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
         this.setBackground(Color.black);
@@ -40,11 +118,18 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
         this.setupGame();
     }
+
+    /**
+     * Thread
+     */
     public void startGameThread(){
         Game_Thread = new Thread(this);
         Game_Thread.start();
     }
 
+    /**
+     * Metoda przygotowujaca gry
+     */
     public void setupGame(){
         game_state = 0;
         map_number = 0;
@@ -74,6 +159,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
+    /**
+     * Metoda odpowiadajaca za akutalizowanie zmiennych
+     */
     public void Update(){
         if(game_state == gameplay_state){
             Player.update();

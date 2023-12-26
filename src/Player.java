@@ -3,6 +3,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.awt.*;
 
+/**
+ * Klasa odpowiadajaca za gracza
+ */
 public class Player extends Entity {
     int speed, map_x, map_y, energy = 60;
     String direction;
@@ -11,6 +14,14 @@ public class Player extends Entity {
     KeyHandler Key_Handler;
     MapStorageAndRender Map_Storage_And_Render;
     TilesStorage Tiles_Storage;
+
+    /**
+     * Konstruktor
+     * @param Game_Panel obiekt
+     * @param Key_Handler obiekt
+     * @param Map_Storage_And_Render obiekt
+     * @param Tiles_Storage obiekt
+     */
 
     public Player(GamePanel Game_Panel, KeyHandler Key_Handler, MapStorageAndRender Map_Storage_And_Render, TilesStorage Tiles_Storage){
         this.Game_Panel = Game_Panel;
@@ -21,6 +32,10 @@ public class Player extends Entity {
         setDefaultValues();
         getPlayerImage();
     }
+
+    /**
+     * Metoda ustawiajaca wartosci startowe
+     */
     public void setDefaultValues(){
         x = 48;
         y = 48;
@@ -29,6 +44,9 @@ public class Player extends Entity {
 
     }
 
+    /**
+     * Metoda pobierajaca grafike gracza
+     */
     public void  getPlayerImage(){
         try{
 
@@ -46,6 +64,9 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Metoda obliczajaca pozycje
+     */
     public void calculateMapGrid(){
         boolean check_x = true, check_y = true;
         int i = 0, j = 0;
@@ -91,6 +112,9 @@ public class Player extends Entity {
 
     }
 
+    /**
+     * Metoda akutalizujaca pozycje na mapie
+     */
     public void update(){
         calculateMapGrid();
         if(Key_Handler.w_pressed && (Key_Handler.a_pressed == false) && (Key_Handler.d_pressed == false) && (Key_Handler.s_pressed == false)){
@@ -147,6 +171,11 @@ public class Player extends Entity {
             animation_counter = 0;
         }
     }
+
+    /**
+     * Metoda rysujaca gracza
+     * @param player obiekt
+     */
     public void draw(Graphics2D player){
         BufferedImage player_image = null;
         switch(direction){

@@ -4,6 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.security.Key;
 
+/**
+ * Klasa odpowiadajaca za gotowanie
+ */
 public class Cooking {
     GamePanel Game_Panel;
     Player Player;
@@ -13,6 +16,15 @@ public class Cooking {
     BufferedImage[] Item_Frames;
     int  inventory_y = 0;
     boolean button_pressed = false;
+
+    /**
+     * Konstruktor
+     * @param Game_Panel obiekt
+     * @param Player obiekt
+     * @param Map_Storage_And_Render obiekt
+     * @param Key_Handler obiekt
+     * @param Item_List obiekt
+     */
     public Cooking(GamePanel Game_Panel, Player Player, MapStorageAndRender Map_Storage_And_Render, KeyHandler Key_Handler , ItemList Item_List){
         this.Game_Panel = Game_Panel;
         this.Player = Player;
@@ -23,6 +35,9 @@ public class Cooking {
         getItemFrames();
     }
 
+    /**
+     * Metoda pobierajace obrazki
+     */
     public void getItemFrames(){
         try{
             Item_Frames[0] = ImageIO.read(getClass().getResourceAsStream("res/Player_GUI/Item_Frame/selected_item_frame.png"));
@@ -31,11 +46,20 @@ public class Cooking {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metoda sprawdzajaca czy gracz zamierza uzyc piecyka
+     */
     public void stoveChecker(){
         if((Map_Storage_And_Render.Map[Game_Panel.map_number][Player.map_y][Player.map_x] == 13 ) && Key_Handler.e_pressed == true ){
             Game_Panel.game_state = Game_Panel.cooking_state;
         }
     }
+
+    /**
+     * Metoda odpowiedzialna za wyswietlenie ramek na przedmioty
+     * @param g2d obiekt
+     */
     public void drawRecipeFrames(Graphics2D g2d){
         g2d.setFont(new Font("Large_Bold", Font.BOLD, 96));
         g2d.setColor(Color.BLACK);
@@ -64,6 +88,10 @@ public class Cooking {
             g2d.drawImage(Item_Frames[0], 604, 318, 48, 48, null);
         }
     }
+
+    /**
+     * Metoda odpowiadajaca za kursor w menu piecyka
+     */
     public void stoveCursorHandler(){
         if((inventory_y >= 0) && (inventory_y < 2) && (button_pressed == false)) {
             if(Key_Handler.s_pressed == true){
@@ -101,6 +129,11 @@ public class Cooking {
             button_pressed = false;
         }
     }
+
+    /**
+     * Metoda wyswietlajaca przedmioty potrzebne w recepturze
+     * @param g2d obiekt
+     */
     public void drawRecipeItems(Graphics2D g2d) {
         g2d.drawImage(Item_List.Item[3].image, 100, 78, 48, 48, null);
         g2d.drawImage(Item_List.Item[0].image, 268, 78, 48, 48, null);

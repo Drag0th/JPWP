@@ -3,6 +3,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Klasa odpowiedzialna za wyswietlanie GUI.
+ */
 public class GUI {
     int frames_state = 0;
     GamePanel Game_Panel;
@@ -13,6 +16,12 @@ public class GUI {
     Player Player;
     KeyHandler Key_Handler;
 
+    /**
+     * Konstruktor
+     * @param Game_Panel obiekt
+     * @param Player obiekt
+     * @param Key_Handler obiekt
+     */
     public GUI(GamePanel Game_Panel, Player Player, KeyHandler Key_Handler){
         this.Key_Handler = Key_Handler;
         this.Game_Panel = Game_Panel;
@@ -30,6 +39,9 @@ public class GUI {
 
     }
 
+    /**
+     * Metoda pobierajaca grafike
+     */
     public void getGUIImage(){
         try{
             //Player_GUI
@@ -49,6 +61,10 @@ public class GUI {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metoda pobierajaca grafike paska energii
+     */
     public void getEnergyBarImage(){
         try{
             Energy_Bar[0] = ImageIO.read(getClass().getResourceAsStream("res/Player_GUI/Energy_Bar/0.png"));
@@ -77,6 +93,10 @@ public class GUI {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metoda pobierajaca grafike ramek
+     */
     public void getItemFrames(){
         try{
             Item_Frames[0] = ImageIO.read(getClass().getResourceAsStream("res/Player_GUI/Item_Frame/selected_item_frame.png"));
@@ -86,6 +106,10 @@ public class GUI {
         }
     }
 
+    /**
+     * Metoda wyswietlajaca menu_0
+     * @param g2d obiekt
+     */
     public void drawMainMenu_0(Graphics2D g2d){
         //Background
         g2d.setColor(new Color(0,71,171));
@@ -118,6 +142,10 @@ public class GUI {
         g2d.drawString("Wyjdz", x, y);
     }
 
+    /**
+     * Metoda wyswiietlajaca menu_1
+     * @param g2d obiekt
+     */
     public void drawMainMenu_1(Graphics2D g2d){
         //Background
         g2d.setColor(new Color(0,71,171));
@@ -150,6 +178,10 @@ public class GUI {
         g2d.drawString("Wyjdz", x, y);
     }
 
+    /**
+     * Metoda wyswieitlajaca menu_2
+     * @param g2d obiekt
+     */
     public void drawMainMenu_2(Graphics2D g2d){
         //Background
         g2d.setColor(new Color(0,71,171));
@@ -182,6 +214,10 @@ public class GUI {
         g2d.drawString(">Wyjdz", x, y);
     }
 
+    /**
+     * Metoda wyswietlajaca odpowiednie menu
+     * @param g2d obiekt
+     */
     public void drawMainMenu(Graphics2D g2d){
         if(Game_Panel.game_state == 0)
             drawMainMenu_0(g2d);
@@ -190,6 +226,11 @@ public class GUI {
         if(Game_Panel.game_state == 2)
             drawMainMenu_2(g2d);
     }
+
+    /**
+     * Metoda rysujaca tlo GUI
+     * @param g2d obiekt
+     */
     public void drawPlayerGUIBackground(Graphics2D g2d){
         int x = 0, y = 480;
 
@@ -202,6 +243,11 @@ public class GUI {
             y = y + 48;
         }
     }
+
+    /**
+     * Metoda rysujaca pasek energii
+     * @param g2d obiekt
+     */
     public void drawPlayerEnergyBar(Graphics2D g2d){
         int x = 48, y = 504;
         if(Player.energy == 100){
@@ -311,6 +357,11 @@ public class GUI {
         }
 
     }
+
+    /**
+     * Metoda wyswietlajaca ramki na przedmioty
+     * @param g2d obiekt
+     */
     public void drwaPlayerItemFrames(Graphics2D g2d) {
 
         if(Key_Handler.one_pressed == true){
@@ -346,11 +397,21 @@ public class GUI {
             g2d.drawImage(Item_Frames[0], x, y, 48, 48, null);
         }
     }
+
+    /**
+     * Metoda zbiorcza rozpoczyna inne metody
+     * @param g2d obiekt
+     */
     public void drawPlayerGUI(Graphics2D g2d){
         drawPlayerGUIBackground(g2d);
         drawPlayerEnergyBar(g2d);
         drwaPlayerItemFrames(g2d);
     }
+
+    /**
+     * Metoda wyswietlajaca menu snu
+     * @param g2d obiekt
+     */
     public void drawSleepMenu(Graphics2D g2d){
         //Background
         g2d.setColor(new Color(0, 0, 0));
@@ -373,6 +434,11 @@ public class GUI {
         g2d.setColor(Color.RED);
         g2d.drawString(">Kontynuuj", x, y);
     }
+
+    /**
+     * Metoda rysujaca dane
+     * @param g2d obiekt
+     */
     public void drawDataMenu(Graphics2D g2d){
         //Background
         g2d.setColor(new Color(0,71,171));

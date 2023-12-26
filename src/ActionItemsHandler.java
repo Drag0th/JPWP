@@ -1,6 +1,9 @@
 import javax.management.relation.InvalidRoleInfoException;
 import java.awt.*;
 
+/**
+ * Klasa odpowiedzialna za obsługe przedmiotow aktywnych
+ */
 public class ActionItemsHandler {
 
     Inventory Inventory;
@@ -14,6 +17,18 @@ public class ActionItemsHandler {
     Data Data;
     boolean button_pressed = false;
 
+    /**
+     * Konstruktor
+     * @param Inventory obiekt
+     * @param Item_List obiekt
+     * @param Game_Panel obiekt
+     * @param Map_Storage_And_Render obiekt
+     * @param Player obiekt
+     * @param GUI obiekt
+     * @param Key_Handler obiekt
+     * @param Plants obiekt
+     * @param Data obiekt
+     */
     public ActionItemsHandler(Inventory Inventory, ItemList Item_List, GamePanel Game_Panel, MapStorageAndRender Map_Storage_And_Render, Player Player, GUI GUI, KeyHandler Key_Handler, Plants Plants, Data Data){
         this.Inventory = Inventory;
         this.Item_List = Item_List;
@@ -26,6 +41,10 @@ public class ActionItemsHandler {
         this.Data = Data;
     }
 
+    /**
+     * Metoda odpowiadajaca za odczytanie id przedmiotu i wybor odpowiedniej metody obsługujacej dany przedmiot
+     * @param g2d obiekt
+     */
     public void useItem(Graphics2D g2d){
         if(Key_Handler.e_pressed == true && button_pressed == false) {
             button_pressed = true;
@@ -63,12 +82,21 @@ public class ActionItemsHandler {
         }
     }
 
+    /**
+     * Metoda odpowiedzialna za uzywanie konewki
+     * @param g2d obiekt
+     */
     public void wateringCanUse(Graphics2D g2d){
         Player.energy -= 10;
         if(Map_Storage_And_Render.Map[Game_Panel.map_number][Player.map_y][Player.map_x] == 9){
             Map_Storage_And_Render.Map[Game_Panel.map_number][Player.map_y][Player.map_x] = 12;
         }
     }
+
+    /**
+     *  Metoda odpowiedzialna za uzywanie przedmiotu o nazwie kosa w grze
+     * @param g2d obiekt
+     */
     public void scytheUse(Graphics2D g2d){
         Player.energy -= 10;
         if(Player.map_x >= 2 && Player.map_y >= 5) {
@@ -116,6 +144,11 @@ public class ActionItemsHandler {
             }
         }
     }
+
+    /**
+     * Metoda odpowiedzialna za używanie nasion pszenicy
+     * @param g2d obiekt
+     */
     public void wheatSeedsUse(Graphics2D g2d){
         Player.energy -= 10;
         if(Player.map_x >= 2 && Player.map_y >= 5) {
@@ -140,6 +173,11 @@ public class ActionItemsHandler {
             }
         }
     }
+
+    /**
+     * Metoda odpowiedzialna za uzycie nasion pomidora
+     * @param g2d obiekt
+     */
     public void tomatoSeedsUse(Graphics2D g2d){
         Player.energy -= 10;
         if(Player.map_x >= 2 && Player.map_y >= 5) {
@@ -164,6 +202,11 @@ public class ActionItemsHandler {
             }
         }
     }
+
+    /**
+     * Metoda odpowiadajaca za uzywanie przedmiotow jadalnych.
+     * @param item_id zmienna
+     */
     public void eatItem(int item_id){
         Player.energy = Player.energy + Item_List.Item[item_id].energy_gain;
         Item_List.Item[item_id].amount--;
@@ -189,6 +232,11 @@ public class ActionItemsHandler {
             Data.Bread_counter++;
         }
     }
+
+    /**
+     * Metoda odpowiedzialna za uzycie nasion salaty/kapusty.
+     * @param g2d obiekt
+     */
     public void cabbageSeedsUse(Graphics2D g2d){
         Player.energy -= 10;
         if(Player.map_x >= 2 && Player.map_y >= 5) {
